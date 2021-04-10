@@ -10,24 +10,40 @@ RIGHT = 0
 class Snake:
     def __init__(self):
         """
-        initailize the snake method and create a segemnts list
+        initialize the snake method and create a segments list
         """
         self.segments = []
         self.create_snake()
 
     def create_snake(self):
         """
-        show the snake on screen
+        Create a snake with starting positions
 
-        :return: create a turtle and turn into snake on screen
+        :return: a three segments snake
         """
-        for postion in STARTING_POSITION:
-            segment = Turtle('square')
-            segment.color('white')
-            segment.penup()
-            segment.goto(postion)
-            self.segments.append(segment)
-            
+        for position in STARTING_POSITION:
+            self.add_segment(position=position)
+
+    def add_segment(self, position):
+        """
+        Create new segment and assign it to the position of user choice
+
+        :param position: get int value of user input and assign it
+        """
+        segment = Turtle('square')
+        segment.color('white')
+        segment.penup()
+        segment.goto(position)
+        self.segments.append(segment)
+
+    def extend(self):
+        """
+        Add new segment to the last of the position
+
+        :return: add existing snake new segement to its last position
+        """
+        self.add_segment(self.segments[-1].position())
+
     def move(self):
         """
         Move the snake
@@ -41,18 +57,38 @@ class Snake:
         self.segments[0].forward(MOVE_DISTANCE)
 
     def up(self):
+        """
+        Move the snake up
+
+        :return: Move the snake up
+        """
         if self.segments[0].heading() != DOWN:
             self.segments[0].setheading(UP)
 
     def down(self):
+        """
+        Move the snake down
+
+        :return: move the snake down
+        """
         if self.segments[0].heading() != UP:
             self.segments[0].setheading(DOWN)
 
     def left(self):
+        """
+        Move the snake left
+
+        :return: move the snake left
+        """
         if self.segments[0].heading() != RIGHT:
             self.segments[0].setheading(LEFT)
 
     def right(self):
+        """
+        Move the snake right
+
+        :return: move the snake right
+        """
         if self.segments[0].heading() != LEFT:
             self.segments[0].setheading(RIGHT)
 
