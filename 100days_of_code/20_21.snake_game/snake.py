@@ -36,6 +36,12 @@ class Snake:
         segment.goto(position)
         self.segments.append(segment)
 
+    def reset(self):
+        for segment in self.segments:
+            segment.goto(1000, 100)
+        self.segments.clear()
+        self.create_snake()
+
     def extend(self):
         """
         Add new segment to the last of the position
@@ -91,5 +97,3 @@ class Snake:
         """
         if self.segments[0].heading() != LEFT:
             self.segments[0].setheading(RIGHT)
-
-
