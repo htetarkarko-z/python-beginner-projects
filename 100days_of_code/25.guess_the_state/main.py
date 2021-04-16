@@ -24,12 +24,8 @@ while len(guessed_state) < 50:
                                   prompt='Enter Your Name').capitalize()
     # if user exit return missing state
     if user_guess == 'Exit':
-        missing_state = []
-        for state in states:
-            if state not in guessed_state:
-                missing_state.append(state)
-                new_data = pandas.DataFrame(missing_state)
-                new_data.to_csv('state_to_learn.csv')
+        missing_state = pandas.DataFrame([state for state in states if state not in guessed_state])
+        missing_state.to_csv('state_to_learn.csv')
         break
     # if user guess is already guessed then pass
     elif user_guess in guessed_state:
