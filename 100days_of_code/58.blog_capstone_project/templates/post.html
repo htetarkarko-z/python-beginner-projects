@@ -1,0 +1,34 @@
+{% include 'header.html' %}
+        <!-- Page Header-->
+        <header class="masthead" style="background-image: url('../static/img/post-bg.jpg')">
+            <div class="overlay"></div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-md-10 mx-auto">
+                        <div class="post-heading">
+                            <h1>{{ blog_posts[post_id - 1]["title"] }}</h1>
+                            <h2 class="subheading">{{ blog_posts[post_id - 1]["subtitle"] }}</h2>
+                            <span class="meta">
+                                Posted by
+                                <a href="#!">{{ blog_posts[post_id - 1]["author"] }}</a>
+                                on {{ blog_posts[post_id - 1]["date"] }}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- Post Content-->
+        <article>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-md-10 mx-auto">
+                        <p>
+                            {{ blog_posts[post_id - 1]["body"] }}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </article>
+        <hr />
+{% include 'footer.html' %}
